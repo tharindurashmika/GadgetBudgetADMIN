@@ -15,7 +15,7 @@ public class FundingBodyServlet {
 		try
 		{ 
 			Class.forName("com.mysql.jdbc.Driver");  
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3310/gadgetbadget?useTimezone=true&serverTimezone=UTC", "root", ""); 
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3310/test?useTimezone=true&serverTimezone=UTC", "root", ""); 
 		} 
 		catch (Exception e) 
 		{
