@@ -50,10 +50,10 @@ public class FundingBodyService
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.TEXT_PLAIN) 
-	public String updateFunds(String orderData) 
+	public String updateFunds(String fundData) 
 	{ 
 		//Convert the input string to a JSON object 
-		 JsonObject orderObject = new JsonParser().parse(orderData).getAsJsonObject(); 
+		 JsonObject orderObject = new JsonParser().parse(fundData).getAsJsonObject(); 
 		//Read the values from the JSON object
 		 String id = orderObject.get("ID").getAsString(); 
 		 String name = orderObject.get("FundName").getAsString(); 
@@ -69,10 +69,10 @@ public class FundingBodyService
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 
 	@Produces(MediaType.TEXT_PLAIN) 
-	public String deleteFunds(String orderData) 
+	public String deleteFunds(String fundData) 
 	{ 
 		//Convert the input string to an XML document
-		 Document doc = Jsoup.parse(orderData, "", Parser.xmlParser()); 
+		 Document doc = Jsoup.parse(fundData, "", Parser.xmlParser()); 
 		 
 		//Read the value from the element <itemID>
 		 String orderID = doc.select("orderID").text(); 
