@@ -17,7 +17,7 @@ import com.gadget_badget.fundingbodies.model.FundingBodyServlet;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-@Path("/Order") 
+@Path("/Admin") 
 public class FundingBodyService 
 {	
 	FundingBodyServlet orderObj = new FundingBodyServlet(); 
