@@ -1,4 +1,4 @@
-package com.gadget_badget.orders.model;
+package com.gadget_badget.fundingbodies.model;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,14 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.gadget_badget.fundingbodies.model.FundingBodyServlet;;
 
-@WebServlet("/OrderAPI")
-public class OrderAPI extends HttpServlet {
+@WebServlet("/FundingBodyAPI")
+public class FundingBodyAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	OrderServlet orderObj = new OrderServlet();
+	FundingBodyServlet fundingObj = new FundingBodyServlet();
 	
-	public OrderAPI() {
+	public FundingBodyAPI() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,13 +34,10 @@ public class OrderAPI extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// TODO Auto-generated method stub
-		String outputString = orderObj.insertOrder(request.getParameter("orderCode"), 
-				request.getParameter("customerID"),
-				request.getParameter("customerEmail"), 
-				request.getParameter("customerName"), 
-				request.getParameter("totalAmount"),
-				request.getParameter("cardNo"),
-				request.getParameter("cvvNo"));
+		String outputString = fundingObj.insertFunds(
+				request.getParameter("Name"), 
+				request.getParameter("Field"),
+				request.getParameter("Range"));
 
 		response.getWriter().write(outputString);
 	}	
@@ -49,15 +47,11 @@ public class OrderAPI extends HttpServlet {
 		
 		Map paras = getParasMap(request);
 
-		String outputString = orderObj.updateOrder(
-				paras.get("orderID").toString(),
-				paras.get("orderCode").toString(),
-				paras.get("customerID").toString(), 
-				paras.get("customerEmail").toString(), 
-				paras.get("customerName").toString(),
-				paras.get("totalAmount").toString(),
-				paras.get("cardNo").toString(),
-				paras.get("cvvNo").toString()); 
+		String outputString = fundingObj.updateFunds(
+				paras.get("ID").toString(),
+				paras.get("Name").toString(),
+				paras.get("Field").toString(), 
+				paras.get("Range").toString()); 
 
 		response.getWriter().write(outputString);
 	}
@@ -67,7 +61,7 @@ public class OrderAPI extends HttpServlet {
 		
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-		String output = orderObj.deleteOrder(paras.get("orderID").toString());
+		String output = fundingObj.deleteFunds(paras.get("ID").toString());
 		response.getWriter().write(output); 		
 	}
 
