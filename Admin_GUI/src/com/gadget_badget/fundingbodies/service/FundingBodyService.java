@@ -75,7 +75,7 @@ public class FundingBodyService
 		 Document doc = Jsoup.parse(fundData, "", Parser.xmlParser()); 
 		 
 		//Read the value from the element <itemID>
-		 String orderID = doc.select("orderID").text(); 
+		 String orderID = doc.select("ID").text(); 
 		 String output = orderObj.deleteFunds(orderID); 
 		 return output; 
 	}
